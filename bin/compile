@@ -83,6 +83,7 @@ SBT_TASKS="compile stage"
 # $ git push heroku master
 # See: https://devcenter.heroku.com/articles/scala-support#clean-builds
 [ "$SBT_CLEAN" = "true" ] && SBT_TASKS="clean $SBT_TASKS"
+[ -n "$SBT_SUBPROJECT" ] && SBT_TASKS=" ; project $SBT_SUBPROJECT ; $SBT_TASKS"
 
 if [ ! -d .ivy2/cache ]; then
    mkdir -p .ivy2/cache
